@@ -1,632 +1,108 @@
-bash
-
-cat /mnt/user-data/outputs/index.html
-Salida
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="B-Stock">
-<meta name="theme-color" content="#0a0a0a">
-<title>B-Stock Tracker</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root {
-  --bg: #0a0a0a;
-  --bg2: #141414;
-  --bg3: #1c1c1c;
-  --bg4: #242424;
-  --border: rgba(255,255,255,0.08);
-  --border2: rgba(255,255,255,0.14);
-  --text: #f0f0f0;
-  --text2: #888;
-  --text3: #555;
-  --green: #22c55e;
-  --green-bg: rgba(34,197,94,0.12);
-  --red: #ef4444;
-  --red-bg: rgba(239,68,68,0.12);
-  --amber: #f59e0b;
-  --amber-bg: rgba(245,158,11,0.12);
-  --blue: #3b82f6;
-  --blue-bg: rgba(59,130,246,0.12);
-  --teal: #14b8a6;
-  --teal-bg: rgba(20,184,166,0.12);
-  --accent: #22c55e;
-  --safe-top: env(safe-area-inset-top, 44px);
-  --safe-bottom: env(safe-area-inset-bottom, 20px);
+/* latin-ext */
+@font-face {
+  font-family: 'DM Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/dmmono/v16/aFTU7PB1QTsUX8KYthSQBLyM.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
-* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-html, body { height: 100%; background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; overflow: hidden; }
-body { display: flex; flex-direction: column; }
-
-/* Header */
-.header {
-  padding: calc(var(--safe-top) + 12px) 20px 12px;
-  background: var(--bg);
-  border-bottom: 0.5px solid var(--border);
-  display: flex; align-items: center; justify-content: space-between;
-  flex-shrink: 0;
+/* latin */
+@font-face {
+  font-family: 'DM Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/dmmono/v16/aFTU7PB1QTsUX8KYthqQBA.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-.header-left h1 { font-size: 20px; font-weight: 600; letter-spacing: -0.5px; }
-.header-left p { font-size: 12px; color: var(--text3); margin-top: 1px; font-family: 'DM Mono', monospace; }
-.cloud-badge { font-size: 11px; color: var(--text3); display: flex; align-items: center; gap: 5px; }
-.cloud-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); }
-
-/* Tabs */
-.tabs {
-  display: flex; background: var(--bg2); border-bottom: 0.5px solid var(--border);
-  flex-shrink: 0; overflow-x: auto; scrollbar-width: none;
+/* latin-ext */
+@font-face {
+  font-family: 'DM Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/dmmono/v16/aFTR7PB1QTsUX8KYvumzEY2tbZX9.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
-.tabs::-webkit-scrollbar { display: none; }
-.tab {
-  flex-shrink: 0; padding: 12px 16px; font-size: 12px; font-weight: 500;
-  color: var(--text3); cursor: pointer; border-bottom: 2px solid transparent;
-  display: flex; align-items: center; gap: 6px; transition: color 0.15s;
-  white-space: nowrap;
+/* latin */
+@font-face {
+  font-family: 'DM Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/dmmono/v16/aFTR7PB1QTsUX8KYvumzEYOtbQ.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-.tab.active { color: var(--text); border-bottom-color: var(--accent); }
-.tab-cnt {
-  font-size: 10px; font-family: 'DM Mono', monospace; padding: 1px 6px;
-  border-radius: 99px; background: var(--bg4);
+/* latin-ext */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu6-K6h9Q.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
-.tab.active .tab-cnt { background: var(--green-bg); color: var(--green); }
-
-/* Content */
-.content { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding-bottom: calc(var(--safe-bottom) + 80px); }
-.panel { display: none; padding: 16px; }
-.panel.active { display: block; }
-
-/* FAB */
-.fab {
-  position: fixed; right: 20px; bottom: calc(var(--safe-bottom) + 20px);
-  width: 56px; height: 56px; border-radius: 50%;
-  background: var(--accent); color: #000; border: none;
-  font-size: 26px; font-weight: 300; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 20px rgba(34,197,94,0.4);
-  z-index: 90; transition: transform 0.15s;
+/* latin */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-.fab:active { transform: scale(0.93); }
-
-/* Stat row */
-.stat-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-bottom: 16px; }
-.stat { background: var(--bg2); border-radius: 12px; padding: 12px 8px; text-align: center; }
-.stat-val { font-size: 22px; font-weight: 600; font-family: 'DM Mono', monospace; }
-.stat-lbl { font-size: 10px; color: var(--text3); margin-top: 2px; }
-
-/* Card */
-.card {
-  background: var(--bg2); border: 0.5px solid var(--border); border-radius: 14px;
-  padding: 14px 16px; margin-bottom: 10px;
+/* latin-ext */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu6-K6h9Q.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
-.card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
-.card-title { font-size: 14px; font-weight: 500; line-height: 1.3; flex: 1; padding-right: 10px; }
-.card-sub { font-size: 11px; color: var(--text3); margin-top: 2px; font-family: 'DM Mono', monospace; }
-
-/* Badge */
-.badge { font-size: 10px; font-weight: 500; padding: 3px 8px; border-radius: 99px; white-space: nowrap; flex-shrink: 0; }
-.b-won { background: var(--green-bg); color: var(--green); }
-.b-lost { background: var(--red-bg); color: var(--red); }
-.b-pending { background: var(--amber-bg); color: var(--amber); }
-.b-transit { background: var(--amber-bg); color: var(--amber); }
-.b-us { background: var(--teal-bg); color: var(--teal); }
-.b-mx { background: var(--blue-bg); color: var(--blue); }
-.b-done { background: var(--green-bg); color: var(--green); }
-
-/* Meta chips */
-.chips { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
-.chip { font-size: 11px; background: var(--bg3); border: 0.5px solid var(--border); border-radius: 6px; padding: 3px 8px; color: var(--text2); }
-
-/* Progress */
-.progress { display: flex; gap: 3px; margin-bottom: 4px; }
-.pr-step { flex: 1; height: 3px; border-radius: 2px; background: var(--bg4); }
-.pr-step.done { background: var(--green); }
-.pr-step.cur { background: var(--amber); }
-.pr-labels { display: flex; justify-content: space-between; }
-.pr-labels span { font-size: 9px; color: var(--text3); }
-
-/* Actions row */
-.actions { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
-.btn { padding: 7px 12px; border-radius: 8px; border: 0.5px solid var(--border2); background: var(--bg3); color: var(--text2); font-size: 12px; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; white-space: nowrap; }
-.btn:active { opacity: 0.7; }
-.btn-accent { background: var(--green-bg); color: var(--green); border-color: rgba(34,197,94,0.25); }
-.btn-danger { background: var(--red-bg); color: var(--red); border-color: rgba(239,68,68,0.2); }
-
-/* Cost box */
-.cost-box { background: var(--bg3); border-radius: 10px; padding: 12px; margin-top: 8px; }
-.cr { display: flex; justify-content: space-between; font-size: 12px; padding: 3px 0; color: var(--text2); }
-.cr.total { border-top: 0.5px solid var(--border); margin-top: 6px; padding-top: 7px; color: var(--text); font-weight: 600; font-family: 'DM Mono', monospace; }
-.cr.highlight { color: var(--accent); font-family: 'DM Mono', monospace; font-size: 13px; }
-.pending-tag { font-size: 10px; background: var(--amber-bg); color: var(--amber); padding: 1px 6px; border-radius: 99px; }
-
-/* Sheet (bottom modal) */
-.sheet-bg { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 100; }
-.sheet-bg.open { display: block; }
-.sheet {
-  position: fixed; bottom: 0; left: 0; right: 0; z-index: 101;
-  background: var(--bg2); border-radius: 20px 20px 0 0;
-  border-top: 0.5px solid var(--border2);
-  padding: 0 0 calc(var(--safe-bottom) + 8px);
-  transform: translateY(100%); transition: transform 0.3s cubic-bezier(0.32,0.72,0,1);
-  max-height: 92vh; overflow-y: auto; -webkit-overflow-scrolling: touch;
+/* latin */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-.sheet.open { transform: translateY(0); }
-.sheet-handle { width: 36px; height: 4px; background: var(--bg4); border-radius: 2px; margin: 12px auto 0; }
-.sheet-header { padding: 14px 20px 10px; border-bottom: 0.5px solid var(--border); }
-.sheet-title { font-size: 16px; font-weight: 600; }
-.sheet-body { padding: 16px 20px; }
-
-/* Form */
-.fg { margin-bottom: 14px; }
-.fg label { display: block; font-size: 11px; color: var(--text3); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 500; }
-.fg input, .fg select {
-  width: 100%; background: var(--bg3); border: 0.5px solid var(--border2); border-radius: 10px;
-  color: var(--text); font-size: 15px; font-family: 'DM Sans', sans-serif;
-  padding: 11px 14px; appearance: none; -webkit-appearance: none;
-  outline: none;
+/* latin-ext */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu6-K6h9Q.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
-.fg select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 36px; }
-.fg input:focus { border-color: var(--accent); }
-.form-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.section-lbl { font-size: 11px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: 0.07em; margin: 16px 0 10px; display: flex; align-items: center; gap: 8px; }
-.divider { border: none; border-top: 0.5px solid var(--border); margin: 12px 0; }
-.sheet-footer { display: flex; gap: 8px; padding: 12px 20px 0; border-top: 0.5px solid var(--border); }
-.sheet-footer .btn { flex: 1; text-align: center; padding: 13px; font-size: 14px; border-radius: 12px; }
-.sheet-footer .btn-accent { flex: 2; }
-
-/* Empty */
-.empty { text-align: center; padding: 48px 20px; color: var(--text3); font-size: 13px; }
-.empty-icon { font-size: 40px; margin-bottom: 10px; }
-
-/* Mx complete banner */
-.mx-banner { background: linear-gradient(135deg, var(--green-bg), var(--teal-bg)); border: 0.5px solid rgba(34,197,94,0.2); border-radius: 10px; padding: 10px 14px; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; }
-.mx-banner-txt { font-size: 12px; color: var(--green); font-weight: 500; }
-</style>
-</head>
-<body>
-
-<div class="header">
-  <div class="header-left">
-    <h1>B-Stock</h1>
-    <p>Tracker de subastas</p>
-  </div>
-  <div class="cloud-badge">
-    <div class="cloud-dot" id="cloud-dot"></div>
-    <span id="cloud-txt">Cargando...</span>
-  </div>
-</div>
-
-<div class="tabs">
-  <div class="tab active" onclick="switchTab('dashboard')" id="tab-dashboard">Resumen</div>
-  <div class="tab" onclick="switchTab('won')" id="tab-won">Ganadas <span class="tab-cnt" id="cnt-won">0</span></div>
-  <div class="tab" onclick="switchTab('lost')" id="tab-lost">Perdidas <span class="tab-cnt" id="cnt-lost">0</span></div>
-  <div class="tab" onclick="switchTab('transit')" id="tab-transit">Tránsito <span class="tab-cnt" id="cnt-transit">0</span></div>
-  <div class="tab" onclick="switchTab('costs')" id="tab-costs">Costos</div>
-</div>
-
-<div class="content">
-  <div class="panel active" id="panel-dashboard">
-    <div class="stat-row">
-      <div class="stat"><div class="stat-val" id="s-total">0</div><div class="stat-lbl">Total</div></div>
-      <div class="stat"><div class="stat-val" style="color:var(--green)" id="s-won">0</div><div class="stat-lbl">Ganadas</div></div>
-      <div class="stat"><div class="stat-val" style="color:var(--red)" id="s-lost">0</div><div class="stat-lbl">Perdidas</div></div>
-      <div class="stat"><div class="stat-val" style="color:var(--amber)" id="s-transit">0</div><div class="stat-lbl">Tránsito</div></div>
-    </div>
-    <div id="recent-list"></div>
-  </div>
-  <div class="panel" id="panel-won"><div id="won-list"></div></div>
-  <div class="panel" id="panel-lost"><div id="lost-list"></div></div>
-  <div class="panel" id="panel-transit"><div id="transit-list"></div></div>
-  <div class="panel" id="panel-costs">
-    <div style="font-size:12px;color:var(--text3);margin-bottom:14px;line-height:1.5">Los costos por libra y pieza se completan cuando agregas flete y peso de México.</div>
-    <div id="cost-list"></div>
-  </div>
-</div>
-
-<button class="fab" onclick="openSheet('add')" aria-label="Nueva subasta">+</button>
-
-<!-- Sheet: Add -->
-<div class="sheet-bg" id="bg-add" onclick="closeSheet('add')"></div>
-<div class="sheet" id="sheet-add">
-  <div class="sheet-handle"></div>
-  <div class="sheet-header"><div class="sheet-title">Nueva subasta</div></div>
-  <div class="sheet-body">
-    <div class="form-row2">
-      <div class="fg"><label>ID / Lote</label><input type="text" id="f-id" placeholder="BST-123456"></div>
-      <div class="fg"><label>Resultado</label>
-        <select id="f-result" onchange="toggleWon()">
-          <option value="won">Ganada</option>
-          <option value="lost">Perdida</option>
-        </select>
-      </div>
-    </div>
-    <div class="fg"><label>Descripción del lote</label><input type="text" id="f-desc" placeholder="Ej: Samsung TVs 55″ — 40 unidades"></div>
-    <div class="form-row2">
-      <div class="fg"><label>Categoría</label><input type="text" id="f-cat" placeholder="Electronics"></div>
-      <div class="fg"><label>Fecha</label><input type="date" id="f-date"></div>
-    </div>
-    <div id="won-section">
-      <hr class="divider">
-      <div class="section-lbl">Datos del lote</div>
-      <div class="form-row2">
-        <div class="fg"><label>Precio ganado (USD)</label><input type="number" id="f-price" placeholder="0.00" inputmode="decimal"></div>
-        <div class="fg"><label>Número de piezas</label><input type="number" id="f-pieces" placeholder="0" inputmode="numeric"></div>
-      </div>
-      <hr class="divider">
-      <div class="section-lbl">Flete EE.UU. → Bodega</div>
-      <div class="form-row2">
-        <div class="fg"><label>Costo flete US (USD)</label><input type="number" id="f-freight-us" placeholder="0.00" inputmode="decimal"></div>
-        <div class="fg"><label>Peso en EE.UU. (lbs)</label><input type="number" id="f-weight-us" placeholder="0" inputmode="decimal"></div>
-      </div>
-      <hr class="divider">
-      <div class="section-lbl">Flete México <span class="pending-tag">Se agrega al llegar</span></div>
-      <div class="form-row2">
-        <div class="fg"><label>Costo flete MX (USD)</label><input type="number" id="f-freight-mx" placeholder="—" inputmode="decimal"></div>
-        <div class="fg"><label>Peso llegada MX (lbs)</label><input type="number" id="f-weight-mx" placeholder="—" inputmode="decimal"></div>
-      </div>
-    </div>
-    <div class="fg"><label>Notas</label><input type="text" id="f-notes" placeholder="Opcional"></div>
-  </div>
-  <div class="sheet-footer">
-    <div class="btn" onclick="closeSheet('add')">Cancelar</div>
-    <div class="btn btn-accent" onclick="saveAuction()">Guardar lote</div>
-  </div>
-</div>
-
-<!-- Sheet: Edit -->
-<div class="sheet-bg" id="bg-edit" onclick="closeSheet('edit')"></div>
-<div class="sheet" id="sheet-edit">
-  <div class="sheet-handle"></div>
-  <div class="sheet-header"><div class="sheet-title">Editar lote</div></div>
-  <div class="sheet-body">
-    <input type="hidden" id="ef-id">
-    <div class="fg"><label>Descripción</label><input type="text" id="ef-desc"></div>
-    <div class="form-row2">
-      <div class="fg"><label>Categoría</label><input type="text" id="ef-cat"></div>
-      <div class="fg"><label>Notas</label><input type="text" id="ef-notes"></div>
-    </div>
-    <hr class="divider">
-    <div class="section-lbl">Datos del lote</div>
-    <div class="form-row2">
-      <div class="fg"><label>Precio ganado (USD)</label><input type="number" id="ef-price" inputmode="decimal"></div>
-      <div class="fg"><label>Piezas</label><input type="number" id="ef-pieces" inputmode="numeric"></div>
-    </div>
-    <hr class="divider">
-    <div class="section-lbl">Flete EE.UU. → Bodega</div>
-    <div class="form-row2">
-      <div class="fg"><label>Costo flete US (USD)</label><input type="number" id="ef-freight-us" inputmode="decimal"></div>
-      <div class="fg"><label>Peso EE.UU. (lbs)</label><input type="number" id="ef-weight-us" inputmode="decimal"></div>
-    </div>
-    <hr class="divider">
-    <div class="section-lbl">Flete México <span class="pending-tag">Al llegar</span></div>
-    <div class="form-row2">
-      <div class="fg"><label>Costo flete MX (USD)</label><input type="number" id="ef-freight-mx" inputmode="decimal" placeholder="Pendiente"></div>
-      <div class="fg"><label>Peso llegada MX (lbs)</label><input type="number" id="ef-weight-mx" inputmode="decimal" placeholder="Pendiente"></div>
-    </div>
-  </div>
-  <div class="sheet-footer">
-    <div class="btn" onclick="closeSheet('edit')">Cancelar</div>
-    <div class="btn btn-accent" onclick="saveEdit()">Guardar cambios</div>
-  </div>
-</div>
-
-<!-- Sheet: Status -->
-<div class="sheet-bg" id="bg-status" onclick="closeSheet('status')"></div>
-<div class="sheet" id="sheet-status">
-  <div class="sheet-handle"></div>
-  <div class="sheet-header"><div class="sheet-title">Actualizar estado</div></div>
-  <div class="sheet-body">
-    <input type="hidden" id="st-id">
-    <div class="fg"><label>Estado del envío</label>
-      <select id="st-status">
-        <option value="won">Pendiente de envío</option>
-        <option value="transit_us">En camino → Bodega EE.UU.</option>
-        <option value="at_warehouse">Llegó a Bodega EE.UU.</option>
-        <option value="transit_mx">En camino → México</option>
-        <option value="arrived_mx">Llegó a México</option>
-      </select>
-    </div>
-    <div class="form-row2">
-      <div class="fg"><label>Fecha</label><input type="date" id="st-date"></div>
-      <div class="fg"><label>Tracking</label><input type="text" id="st-tracking" placeholder="Opcional"></div>
-    </div>
-  </div>
-  <div class="sheet-footer">
-    <div class="btn" onclick="closeSheet('status')">Cancelar</div>
-    <div class="btn btn-accent" onclick="saveStatus()">Actualizar</div>
-  </div>
-</div>
-
-<!-- Sheet: MX Complete -->
-<div class="sheet-bg" id="bg-mx" onclick="closeSheet('mx')"></div>
-<div class="sheet" id="sheet-mx">
-  <div class="sheet-handle"></div>
-  <div class="sheet-header"><div class="sheet-title">Llegada a México</div></div>
-  <div class="sheet-body">
-    <input type="hidden" id="mx-id">
-    <div style="font-size:13px;color:var(--text3);margin-bottom:14px;line-height:1.5">Agrega el flete y el peso real para calcular el costo final por libra y por pieza.</div>
-    <div class="form-row2">
-      <div class="fg"><label>Costo flete MX (USD)</label><input type="number" id="mx-freight" placeholder="0.00" inputmode="decimal" oninput="updateMxPreview()"></div>
-      <div class="fg"><label>Peso real (lbs)</label><input type="number" id="mx-weight" placeholder="0" inputmode="decimal" oninput="updateMxPreview()"></div>
-    </div>
-    <div id="mx-preview"></div>
-  </div>
-  <div class="sheet-footer">
-    <div class="btn" onclick="closeSheet('mx')">Cancelar</div>
-    <div class="btn btn-accent" onclick="saveMx()">Confirmar llegada</div>
-  </div>
-</div>
-
-<script>
-const KEY = 'bstock_pwa_v1';
-let auctions = [];
-let saveTimer = null;
-let mxOrigin = null;
-
-async function cloudLoad() {
-  setCloud('Cargando...', false);
-  try {
-    const r = await window.storage.get(KEY);
-    if(r && r.value) auctions = JSON.parse(r.value);
-    setCloud('Sincronizado', true);
-  } catch(e) {
-    try { auctions = JSON.parse(localStorage.getItem(KEY) || '[]'); } catch(_) {}
-    setCloud('Local', false);
-  }
-  render();
+/* latin */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-
-async function cloudSave() {
-  try {
-    const data = JSON.stringify(auctions);
-    localStorage.setItem(KEY, data);
-    await window.storage.set(KEY, data);
-    setCloud('Guardado ✓', true);
-  } catch(e) {
-    localStorage.setItem(KEY, JSON.stringify(auctions));
-    setCloud('Solo local', false);
-  }
-  render();
+/* latin-ext */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu6-K6h9Q.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
-
-function save() { if(saveTimer) clearTimeout(saveTimer); saveTimer = setTimeout(cloudSave, 500); }
-function setCloud(txt, ok) {
-  document.getElementById('cloud-txt').textContent = txt;
-  document.getElementById('cloud-dot').style.background = ok ? 'var(--green)' : 'var(--amber)';
+/* latin */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-
-function switchTab(t) {
-  document.querySelectorAll('.tab,.panel').forEach(el => el.classList.remove('active'));
-  document.getElementById('tab-'+t).classList.add('active');
-  document.getElementById('panel-'+t).classList.add('active');
-}
-
-function openSheet(id, data) {
-  if(id === 'edit' && data) {
-    document.getElementById('ef-id').value = data.id;
-    document.getElementById('ef-desc').value = data.desc || '';
-    document.getElementById('ef-cat').value = data.cat || '';
-    document.getElementById('ef-notes').value = data.notes || '';
-    document.getElementById('ef-price').value = data.price || '';
-    document.getElementById('ef-pieces').value = data.pieces || '';
-    document.getElementById('ef-freight-us').value = data.freightUS || '';
-    document.getElementById('ef-weight-us').value = data.weightUS || '';
-    document.getElementById('ef-freight-mx').value = data.freightMX || '';
-    document.getElementById('ef-weight-mx').value = data.weightMX || '';
-  }
-  if(id === 'status' && data) {
-    document.getElementById('st-id').value = data.id;
-    document.getElementById('st-status').value = data.status || 'won';
-    document.getElementById('st-date').value = new Date().toISOString().split('T')[0];
-    document.getElementById('st-tracking').value = data.tracking || '';
-  }
-  if(id === 'mx' && data) {
-    mxOrigin = data;
-    document.getElementById('mx-id').value = data.id;
-    document.getElementById('mx-freight').value = data.freightMX || '';
-    document.getElementById('mx-weight').value = data.weightMX || '';
-    document.getElementById('mx-preview').innerHTML = '';
-    updateMxPreview();
-  }
-  if(id === 'add') {
-    ['f-id','f-desc','f-cat','f-price','f-pieces','f-freight-us','f-weight-us','f-freight-mx','f-weight-mx','f-notes'].forEach(x => {
-      const el = document.getElementById(x); if(el) el.value = '';
-    });
-    document.getElementById('f-date').value = new Date().toISOString().split('T')[0];
-    document.getElementById('f-result').value = 'won';
-    toggleWon();
-  }
-  document.getElementById('bg-'+id).classList.add('open');
-  setTimeout(() => document.getElementById('sheet-'+id).classList.add('open'), 10);
-}
-
-function closeSheet(id) {
-  document.getElementById('sheet-'+id).classList.remove('open');
-  setTimeout(() => document.getElementById('bg-'+id).classList.remove('open'), 300);
-}
-
-function toggleWon() {
-  document.getElementById('won-section').style.display = document.getElementById('f-result').value === 'won' ? '' : 'none';
-}
-
-function updateMxPreview() {
-  if(!mxOrigin) return;
-  const fmx = parseFloat(document.getElementById('mx-freight').value) || 0;
-  const wmx = parseFloat(document.getElementById('mx-weight').value) || 0;
-  const total = (mxOrigin.price||0) + (mxOrigin.freightUS||0) + fmx;
-  const perlb = wmx > 0 ? total / wmx : 0;
-  const perpc = mxOrigin.pieces > 0 ? total / mxOrigin.pieces : 0;
-  document.getElementById('mx-preview').innerHTML = `<div class="cost-box">
-    <div class="cr"><span>Precio lote</span><span>$${fmt(mxOrigin.price||0)}</span></div>
-    <div class="cr"><span>Flete EE.UU.</span><span>$${fmt(mxOrigin.freightUS||0)}</span></div>
-    <div class="cr"><span>Flete México</span><span>$${fmt(fmx)}</span></div>
-    <div class="cr total"><span>Costo total</span><span>$${fmt(total)}</span></div>
-    ${perlb > 0 ? `<div class="cr highlight"><span>$/lb</span><span>$${perlb.toFixed(2)}/lb</span></div>` : ''}
-    ${perpc > 0 ? `<div class="cr highlight"><span>$/pieza</span><span>$${perpc.toFixed(2)}/pz</span></div>` : ''}
-  </div>`;
-}
-
-function fmt(n) { return Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); }
-
-function saveAuction() {
-  const result = document.getElementById('f-result').value;
-  const a = {
-    id: document.getElementById('f-id').value.trim() || ('BST-'+Date.now()),
-    desc: document.getElementById('f-desc').value.trim() || 'Sin descripción',
-    cat: document.getElementById('f-cat').value.trim(),
-    result, status: result === 'won' ? 'won' : 'lost',
-    date: document.getElementById('f-date').value,
-    notes: document.getElementById('f-notes').value.trim(),
-    price: parseFloat(document.getElementById('f-price').value) || 0,
-    pieces: parseInt(document.getElementById('f-pieces').value) || 0,
-    freightUS: parseFloat(document.getElementById('f-freight-us').value) || 0,
-    weightUS: parseFloat(document.getElementById('f-weight-us').value) || 0,
-    freightMX: parseFloat(document.getElementById('f-freight-mx').value) || 0,
-    weightMX: parseFloat(document.getElementById('f-weight-mx').value) || 0,
-    createdAt: new Date().toLocaleDateString('es-MX')
-  };
-  auctions.push(a);
-  save(); closeSheet('add');
-}
-
-function saveEdit() {
-  const id = document.getElementById('ef-id').value;
-  const idx = auctions.findIndex(a => a.id === id);
-  if(idx < 0) return;
-  Object.assign(auctions[idx], {
-    desc: document.getElementById('ef-desc').value.trim(),
-    cat: document.getElementById('ef-cat').value.trim(),
-    notes: document.getElementById('ef-notes').value.trim(),
-    price: parseFloat(document.getElementById('ef-price').value) || 0,
-    pieces: parseInt(document.getElementById('ef-pieces').value) || 0,
-    freightUS: parseFloat(document.getElementById('ef-freight-us').value) || 0,
-    weightUS: parseFloat(document.getElementById('ef-weight-us').value) || 0,
-    freightMX: parseFloat(document.getElementById('ef-freight-mx').value) || 0,
-    weightMX: parseFloat(document.getElementById('ef-weight-mx').value) || 0,
-  });
-  save(); closeSheet('edit');
-}
-
-function saveStatus() {
-  const id = document.getElementById('st-id').value;
-  const idx = auctions.findIndex(a => a.id === id);
-  if(idx < 0) return;
-  auctions[idx].status = document.getElementById('st-status').value;
-  auctions[idx].statusDate = document.getElementById('st-date').value;
-  auctions[idx].tracking = document.getElementById('st-tracking').value;
-  save(); closeSheet('status');
-}
-
-function saveMx() {
-  const id = document.getElementById('mx-id').value;
-  const idx = auctions.findIndex(a => a.id === id);
-  if(idx < 0) return;
-  auctions[idx].freightMX = parseFloat(document.getElementById('mx-freight').value) || 0;
-  auctions[idx].weightMX = parseFloat(document.getElementById('mx-weight').value) || 0;
-  auctions[idx].status = 'arrived_mx';
-  auctions[idx].mxDate = new Date().toLocaleDateString('es-MX');
-  save(); closeSheet('mx');
-}
-
-function deleteAuction(id) {
-  if(!confirm('¿Eliminar este lote?')) return;
-  auctions = auctions.filter(a => a.id !== id);
-  save();
-}
-
-const SL = {won:'Pendiente',transit_us:'A Bodega EE.UU.',at_warehouse:'En Bodega',transit_mx:'A México',arrived_mx:'En México',lost:'Perdida'};
-const SK = ['won','transit_us','at_warehouse','transit_mx','arrived_mx'];
-const SN = ['Pendiente','A Bodega','En Bodega','A México','México'];
-const BC = {won:'b-won',transit_us:'b-transit',at_warehouse:'b-us',transit_mx:'b-mx',arrived_mx:'b-done',lost:'b-lost'};
-
-function badgeHtml(a) { return `<span class="badge ${BC[a.status]||'b-pending'}">${SL[a.status]||a.status}</span>`; }
-
-function progressHtml(status) {
-  const cur = SK.indexOf(status);
-  const bars = SK.map((_,i) => `<div class="pr-step ${i<cur?'done':i===cur?'cur':''}"></div>`).join('');
-  return `<div class="progress">${bars}</div><div class="pr-labels">${SN.map(l=>`<span>${l}</span>`).join('')}</div>`;
-}
-
-function costHtml(a) {
-  const hasMX = a.freightMX > 0 || a.weightMX > 0;
-  const total = (a.price||0) + (a.freightUS||0) + (a.freightMX||0);
-  const perlb = a.weightMX > 0 ? total / a.weightMX : (a.weightUS > 0 ? ((a.price||0)+(a.freightUS||0)) / a.weightUS : 0);
-  const perpc = a.pieces > 0 ? total / a.pieces : 0;
-  return `<div class="cost-box">
-    <div class="cr"><span>Precio lote</span><span>$${fmt(a.price||0)}</span></div>
-    <div class="cr"><span>Flete EE.UU.</span><span>${a.freightUS>0?'$'+fmt(a.freightUS):'<span style="color:var(--text3)">—</span>'}</span></div>
-    <div class="cr"><span>Flete México</span><span>${hasMX?'$'+fmt(a.freightMX):'<span class="pending-tag">Pendiente</span>'}</span></div>
-    <div class="cr total"><span>${hasMX?'Costo total':'Parcial'}</span><span>$${fmt(total)}</span></div>
-    ${perlb>0?`<div class="cr highlight"><span>$/lb${!hasMX?' (estimado)':''}</span><span>$${perlb.toFixed(2)}/lb</span></div>`:''}
-    ${perpc>0?`<div class="cr highlight"><span>$/pieza${!hasMX?' (parcial)':''}</span><span>$${perpc.toFixed(2)}/pz</span></div>`:''}
-  </div>`;
-}
-
-function card(a, showProgress) {
-  const isWon = a.result === 'won';
-  const needsMX = isWon && (a.status === 'arrived_mx' || a.status === 'at_warehouse') && (!a.freightMX || !a.weightMX);
-  const dataStr = JSON.stringify(a).replace(/"/g,'&quot;');
-  return `<div class="card">
-    <div class="card-top">
-      <div style="flex:1;padding-right:10px">
-        <div class="card-title">${a.desc}</div>
-        <div class="card-sub">${a.id}${a.cat?' · '+a.cat:''}</div>
-      </div>
-      ${badgeHtml(a)}
-    </div>
-    ${isWon ? `<div class="chips">
-      <span class="chip">$${fmt(a.price)}</span>
-      ${a.pieces?`<span class="chip">${a.pieces} pzs</span>`:''}
-      ${a.weightUS?`<span class="chip">${a.weightUS} lbs</span>`:''}
-      ${a.freightUS?`<span class="chip">Flete US $${fmt(a.freightUS)}</span>`:''}
-      ${a.tracking?`<span class="chip">${a.tracking}</span>`:''}
-    </div>` : `<div class="chips"><span class="chip">${a.date||a.createdAt}</span>${a.notes?`<span class="chip">${a.notes}</span>`:''}</div>`}
-    ${showProgress && isWon ? progressHtml(a.status) : ''}
-    <div class="actions">
-      ${isWon?`<div class="btn" onclick='openSheet("status",${dataStr})'>Estado</div>
-      <div class="btn" onclick='openSheet("edit",${dataStr})'>Editar</div>`:''}
-      ${needsMX?`<div class="btn btn-accent" onclick='openSheet("mx",${dataStr})'>Completar MX</div>`:''}
-      <div class="btn btn-danger" onclick="deleteAuction('${a.id}')">Eliminar</div>
-    </div>
-  </div>`;
-}
-
-function render() {
-  const won = auctions.filter(a => a.result === 'won');
-  const lost = auctions.filter(a => a.result === 'lost');
-  const transit = won.filter(a => ['transit_us','at_warehouse','transit_mx'].includes(a.status));
-
-  document.getElementById('cnt-won').textContent = won.length;
-  document.getElementById('cnt-lost').textContent = lost.length;
-  document.getElementById('cnt-transit').textContent = transit.length;
-  document.getElementById('s-total').textContent = auctions.length;
-  document.getElementById('s-won').textContent = won.length;
-  document.getElementById('s-lost').textContent = lost.length;
-  document.getElementById('s-transit').textContent = transit.length;
-
-  const emp = (icon, msg) => `<div class="empty"><div class="empty-icon">${icon}</div>${msg}</div>`;
-  const recent = [...auctions].reverse().slice(0, 8);
-
-  document.getElementById('recent-list').innerHTML = recent.length ? recent.map(a => card(a, false)).join('') : emp('📦','Sin subastas registradas.<br>Toca + para agregar tu primera.');
-  document.getElementById('won-list').innerHTML = won.length ? won.map(a => card(a, true)).join('') : emp('🏆','No hay subastas ganadas.');
-  document.getElementById('lost-list').innerHTML = lost.length ? lost.map(a => card(a, false)).join('') : emp('❌','No hay subastas perdidas.');
-  document.getElementById('transit-list').innerHTML = transit.length ? transit.map(a => card(a, true)).join('') : emp('🚚','Sin lotes en tránsito.');
-  document.getElementById('cost-list').innerHTML = won.length ? won.map(a => `<div class="card">
-    <div class="card-top">
-      <div><div class="card-title">${a.desc}</div><div class="card-sub">${a.id}${a.pieces?' · '+a.pieces+' pzs':''}</div></div>
-      ${badgeHtml(a)}
-    </div>
-    ${costHtml(a)}
-    ${!a.freightMX || !a.weightMX ? `<div class="actions"><div class="btn btn-accent" onclick='openSheet("mx",${JSON.stringify(a).replace(/"/g,"&quot;")})'>Completar con datos MX</div></div>` : ''}
-  </div>`).join('') : emp('🧮','Agrega lotes ganados para ver costos.');
-}
-
-cloudLoad();
-</script>
-</body>
-</html>
